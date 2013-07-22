@@ -1,0 +1,72 @@
+// =============================================================================
+// Source code typography
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+
+code-margin ?= 0;
+code-padding ?= 0 .3ex;
+code-font-family ?= Menlo, Monaco, Consolas, 'Courier New', monospace;
+code-font-size ?= 14px;
+code-line-height ?= 1.5;
+code-color ?= #111;
+code-bg ?= #f7f7f7;
+code-border ?= 1px solid #e1e1e1;
+code-border-radius ?= 3px;
+
+pre-margin ?= 0 0 1 0;
+pre-padding ?= 1ex;
+pre-bg ?= code-bg;
+pre-border ?= code-border;
+pre-border-radius ?= 5px;
+pre-color ?= code-color;
+
+
+// CSS
+// =============================================================================
+typography-code(){
+    code,
+    kbd,
+    pre,
+    samp {
+        margin: 0;
+        padding: 0;
+        font-family: code-font-family;
+    }
+
+    code,
+    kbd {
+        margin: code-margin;
+        padding: code-padding;
+        border: code-border;
+        border-radius: code-border-radius;
+        line-height: code-line-height;
+        font-size: code-font-size;
+        color: code-color;
+        background: code-bg;
+    }
+
+    pre {
+        display: block;
+        margin: pre-margin;
+        padding: pre-padding;
+        border: pre-border;
+        border-radius: pre-border-radius;
+        background: pre-bg;
+        color: pre-color;
+        word-break: break-all;
+        word-wrap: break-word;
+        white-space: pre;
+        white-space: pre-wrap;
+        
+        code {
+            margin: 0;
+            border: 0;
+            padding: 0;
+            color: inherit;
+            background-color: transparent;
+        }
+    }
+}

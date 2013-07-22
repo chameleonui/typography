@@ -1,0 +1,68 @@
+// =============================================================================
+// Quotes
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+q-font-style ?= italic;
+
+blockquote-margin ?= 0 0 1 0;
+blockquote-padding ?= 0 0 0 1;
+blockquote-color ?= #000;
+blockquote-border-color ?= #eee;
+blockquote-border-style ?= solid;
+blockquote-border-width ?= 0 0 0 2px;
+blockquote-font-style ?= italic;
+blockquote-font-weight ?= 400;
+
+blockquote-small-color ?= #000;
+blockquote-small-font-weight ?= 700;
+blockquote-small-font-size ?= 16px;
+blockquote-small-font-style ?= italic;
+blockquote-small-before-content ?= "\2014 \0020";
+
+
+// Mixin
+// =============================================================================
+typography-quotes(){
+    q:before,
+    q:after,
+    blockquote:before,
+    blockquote:after {
+        content: "";
+        content: none;
+    }
+
+    q {
+        font-style: q-font-style;
+    }
+
+    blockquote {
+        margin: blockquote-margin;
+        border-width: blockquote-border-width;
+        border-style: blockquote-border-style;
+        border-color: blockquote-border-color;
+        padding: blockquote-padding;
+        font-style: blockquote-font-style;
+        font-weight: blockquote-font-weight;
+        color: blockquote-color;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        small {
+            display: block;
+            text-align: right;
+            font-size: blockquote-small-font-size;
+            font-weight: blockquote-small-font-weight;
+            font-style: blockquote-small-font-style;
+            color: blockquote-small-color;
+
+            &:before {
+                content: blockquote-small-before-content;
+            }
+        }
+    }
+}

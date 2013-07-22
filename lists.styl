@@ -1,0 +1,225 @@
+// =============================================================================
+// Lists typography
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+dl-margin ?= 0 0 1 0;
+dl-padding ?= 0;
+dt-margin ?= 0;
+dt-font-weight ?= 700;
+dd-margin ?= 0 0 0 1;
+dd-font-weight ?= 400;
+
+dl-horizontal-dt-width ?= 25%;
+dl-horizontal-gutter ?= 5%;
+
+list-inline-gutter ?= 1em;
+
+ul-margin ?= 0 0 1 2em;
+ul-padding ?= 0;
+ul-list-style-position ?= outside;
+
+ol-margin ?= 0 0 1 2.4em;
+ol-padding ?= 0;
+ol-list-style-position ?= outside;
+
+ol-multilevel-number-color ?= #000;
+ol-multilevel-number-width ?= 4em;
+ol-multilevel-number-gutter ?= .5em;
+ol-multilevel-margin-left-nesting-levels ?= 3;
+ol-multilevel-margin-left-nesting-base ?= 3em;
+ol-multilevel-margin-left-nesting-add ?= 1em;
+
+
+// Use flags
+// =============================================================================
+use-lists-ul ?= true;
+use-lists-ol ?= true;
+use-lists-dl ?= true;
+use-lists-dl-horizontal ?= true;
+use-lists-ol-multilevel ?= true;
+
+
+// Mixins
+// =============================================================================
+lists-dl(){
+    dl {
+        margin: dl-margin;
+        padding: dl-padding;
+    }
+
+    dt {
+        margin: dt-margin;
+        font-weight: dt-font-weight;
+    }
+
+    dd {
+        margin: dd-margin;
+        font-weight: dd-font-weight;
+    }
+}
+
+// =============================================================================
+lists-dl-horizontal(){
+    dl.horizontal {
+        dt {
+            text-overflow();
+            float: left;
+            clear: left;
+            width: dl-horizontal-dt-width;
+            text-align: right;
+        }
+
+        dd {
+            margin-left: (dl-horizontal-dt-width + dl-horizontal-gutter);
+        }
+    }
+}
+ 
+// =============================================================================
+list-unstyled(){
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+// =============================================================================
+list-inline(){
+    list-unstyled();
+
+    > li {
+        display: inline-block;
+    }
+
+    > li + li {
+        margin-left: list-inline-gutter;
+    }
+}
+
+// =============================================================================
+lists-ul(){
+    ul {
+        margin: ul-margin;
+        padding: ul-padding;
+        list-style-position: ul-list-style-position;
+
+        > li > ul {
+            margin-bottom: 0;
+        }
+    
+        &.unstyled {
+            list-unstyled();
+        }
+
+        &.inline {
+          list-inline();
+        }
+
+        &.square {
+            list-style-type: square;
+        }
+
+        &.circle {
+            list-style-type: circle;
+        }
+
+        &.disc {
+            list-style-type: disc;
+        }
+    }
+}
+
+// =============================================================================
+lists-ol(){
+    ol {
+        margin: ol-margin;
+        padding: ol-padding;
+        list-style-position: ol-list-style-position;
+
+        > li > ol {
+            margin-bottom: 0;
+        }
+
+        &.unstyled {
+            list-unstyled();
+        }
+
+        &.inline {
+          list-inline();
+        }
+
+        &.decimal {
+            list-style-type: decimal;
+        }
+
+        &.lower-roman {
+            list-style-type: lower-roman;
+        }
+
+        &.lower-latin {
+            list-style-type: lower-latin;
+        }
+
+        &.upper-roman {
+            list-style-type: upper-roman;
+        }
+
+        &.upper-latin {
+            list-style-type: upper-latin;
+        }
+    }
+}
+
+// =============================================================================
+ol-multilevel(){
+    &,
+    & ol {
+        counter-reset: level1;
+    }
+
+    & li {
+        list-style: none;
+    }
+    
+    & li:before {
+        counter-increment: level1;
+        position: absolute;
+        width: ol-multilevel-number-width;
+        margin-left: (ol-multilevel-number-width + ol-multilevel-number-gutter) * -1;
+        content: counters(level1, ".")".";
+        text-align: right;
+        color: ol-multilevel-number-color;
+    }
+
+    // Adjusting margin left for neseted levels begining
+    // =========================================================================
+    levels = ol-multilevel-margin-left-nesting-levels;
+    base = ol-multilevel-margin-left-nesting-base;
+    add = ol-multilevel-margin-left-nesting-add;
+    
+    for level in 1..levels {
+        {string-repeat('>li>ol ',level)} {
+          margin-left: (base + ((level - 1) * add));
+        }
+    }
+}
+
+// =============================================================================
+lists-ol-multilevel(){
+    ol.multilevel {
+        ol-multilevel();
+    }
+}
+
+// =============================================================================
+typography-lists(){
+    lists-ul() if use-lists-ul;
+    lists-ol() if use-lists-ol;
+    lists-dl() if use-lists-dl;
+    lists-dl-horizontal() if use-lists-dl-horizontal;
+    lists-ol-multilevel() if use-lists-ol-multilevel;
+}
+
+

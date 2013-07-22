@@ -1,0 +1,23 @@
+{
+  "name": "typography",
+  "repo": "chameleonui/typography",
+  "description": "Chameleon UI typography mixins and styles",
+  "version": "1.0.0",
+  "keywords": [],
+  "dependencies": {
+    "chameleonui/utils": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "styles": [
+    "headings.styl",
+    "paragraph.styl",
+    "inlines.styl",
+    "lists.styl",
+    "quotes.styl",
+    "code.styl",
+    "nice-amp.styl",
+    "text-align.styl",
+    "typography.styl"
+  ]
+}

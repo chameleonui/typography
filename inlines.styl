@@ -1,0 +1,80 @@
+// =============================================================================
+// Inlines typography
+// =============================================================================
+
+
+// Variables
+// =============================================================================
+abbr-border-color ?= #000;
+
+marked-color ?= #000;
+marked-bg-color ?= #ffff66;
+
+ins-color ?= #e00;
+del-color ?= #666;
+
+small-font-size ?= 80%;
+
+sub-sup-font-size ?= 75%;
+sup-top ?= -0.5em
+sub-bottom ?= -0.25em
+
+// Mixins
+// =============================================================================
+typography-inlines(){
+    em,
+    i,
+    dfn {
+        font-style: italic;
+    }
+
+    strong,
+    b {
+        font-weight: bold;
+    }
+
+    small,
+    .small {
+        font-size: small-font-size;
+        line-height: inherit;
+    }
+
+    abbr[title]{
+        border-bottom: 1px dotted abbr-border-color;
+        text-transform: uppercase;
+        cursor: help;
+    }
+
+    ins {
+        color: ins-color;
+    }
+
+    del {
+        color: del-color;
+        text-decoration: line-through;
+    }
+
+    mark,
+    .highlight {
+        padding: 0 2px;
+        color: marked-color;
+        background-color: marked-bg-color;
+    }
+
+    // Prevents sub and sup affecting line-height in all browsers
+    sub, sup {
+        position: relative;
+        font-size: sub-sup-font-size;
+        line-height: 0;
+        vertical-align: baseline;
+        padding: 0 1px;
+    }
+
+    sup {
+        top: sup-top;
+    }
+
+    sub {
+        bottom: sub-bottom;
+    }
+}

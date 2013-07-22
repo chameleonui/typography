@@ -1,0 +1,29 @@
+// =============================================================================
+// Chameleon Typography
+// =============================================================================
+
+
+// Use flags
+// =============================================================================
+use-typography-headings ?= true;
+use-typography-paragraph ?= true;
+use-typography-inlines ?= true;
+use-typography-lists ?= true;
+use-typography-quotes ?= true;
+use-typography-code ?= true;
+use-typography-nice-amp ?= true;
+use-typography-text-align ?= true;
+
+
+// Mixin
+// =============================================================================
+typography(){
+    typography-headings() if use-typography-headings;
+    typography-paragraph() if use-typography-paragraph;
+    typography-inlines() if use-typography-inlines;
+    typography-lists() if use-typography-lists;    
+    typography-quotes() if use-typography-quotes;    
+    typography-code() if use-typography-code;    
+    typography-nice-amp() if use-typography-nice-amp;    
+    typography-text-align() if use-typography-text-align;    
+}
