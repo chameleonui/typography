@@ -3,18 +3,62 @@
 // =============================================================================
 
 
+// Variables
+// =============================================================================
+// Set grid variables to null if not defined
+grid-hand-class ?= null;
+grid-lap-class ?= null;
+grid-desk-class ?= null;
+
+grid-lap-start ?= null; 
+grid-desk-start ?= null;
+
+grid-hand-up-media ?= null;
+grid-lap-up-media ?= null;
+grid-desk-up-media ?= null;
+
+
 // Mixin
 // =============================================================================
-typography-text-align(){
-    .text-left {
+typography-text-align-factory(prefix = null){
+    if (prefix != null) {
+        prefix = prefix + '-';
+    }
+
+    .{prefix}text-left {
         text-align: left;
     }
 
-    .text-right {
+    .{prefix}text-right {
         text-align: right;
     }
 
-    .text-center {
+    .{prefix}text-center {
         text-align: center;
+    }
+}
+
+
+// Mixin
+// =============================================================================
+typography-text-align(){
+    typography-text-align-factory();
+
+    if (grid-hand-up-media != null && grid-hand-class != null) {
+        @media grid-hand-up-media {
+            typography-text-align-factory(grid-hand-class);
+        }
+    }
+
+    if (grid-lap-up-media != null && grid-lap-class != null && grid-lap-start != null) {
+        @media grid-lap-up-media {
+            typography-text-align-factory(grid-lap-class);
+        }
+    }
+
+    if (grid-desk-up-media != null && grid-desk-class != null && grid-desk-start != null) {
+        @media grid-desk-up-media {
+            typography-text-align-factory(grid-desk-class);
+        }
     }
 }

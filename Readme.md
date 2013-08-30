@@ -5,7 +5,7 @@ Chameleon UI typography mixins and styles
 
 ## Installation
 
-Install with [component](http://component.io):
+Install with [component](http://github.com/component/component):
 
     $ component install chameleonui/typography
 
