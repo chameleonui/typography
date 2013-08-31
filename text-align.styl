@@ -3,25 +3,10 @@
 // =============================================================================
 
 
-// Variables
-// =============================================================================
-// Set grid variables to null if not defined
-grid-hand-class ?= null;
-grid-lap-class ?= null;
-grid-desk-class ?= null;
-
-grid-lap-start ?= null; 
-grid-desk-start ?= null;
-
-grid-hand-up-media ?= null;
-grid-lap-up-media ?= null;
-grid-desk-up-media ?= null;
-
-
 // Mixin
 // =============================================================================
 typography-text-align-factory(prefix = null){
-    if (prefix != null) {
+    if (prefix is defined) {
         prefix = prefix + '-';
     }
 
@@ -44,19 +29,19 @@ typography-text-align-factory(prefix = null){
 typography-text-align(){
     typography-text-align-factory();
 
-    if (grid-hand-up-media != null && grid-hand-class != null) {
+    if (grid-hand-up-media is defined && grid-hand-class is defined) {
         @media grid-hand-up-media {
             typography-text-align-factory(grid-hand-class);
         }
     }
 
-    if (grid-lap-up-media != null && grid-lap-class != null && grid-lap-start != null) {
+    if (grid-lap-up-media is defined && grid-lap-class is defined && grid-lap-start is defined) {
         @media grid-lap-up-media {
             typography-text-align-factory(grid-lap-class);
         }
     }
 
-    if (grid-desk-up-media != null && grid-desk-class != null && grid-desk-start != null) {
+    if (grid-desk-up-media is defined && grid-desk-class is defined && grid-desk-start is defined) {
         @media grid-desk-up-media {
             typography-text-align-factory(grid-desk-class);
         }
