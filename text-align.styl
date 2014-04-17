@@ -35,13 +35,13 @@ typography-text-align(){
         }
     }
 
-    if (grid-lap-up-media is defined && grid-lap-class is defined && grid-lap-start is defined) {
+    if (grid-lap-up-media is defined && grid-lap-class is defined) {
         @media grid-lap-up-media {
             typography-text-align-factory(grid-lap-class);
         }
     }
 
-    if (grid-desk-up-media is defined && grid-desk-class is defined && grid-desk-start is defined) {
+    if (grid-desk-up-media is defined && grid-desk-class is defined) {
         @media grid-desk-up-media {
             typography-text-align-factory(grid-desk-class);
         }
